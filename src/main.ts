@@ -4,11 +4,12 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createI18n } from "vue-i18n";
 
+import ElementPlus from "element-plus";
 import { router } from "./router";
 
 import { registerStore } from "./store";
 import App from "~/App.vue";
-
+import "element-plus/dist/index.css";
 import "~/styles/tailwind.css";
 import "~/styles/main.css";
 
@@ -28,4 +29,5 @@ app.use(createI18n({
 app.use(createPinia());
 registerStore();
 app.use(router);
+app.use(ElementPlus);
 app.mount("#app");

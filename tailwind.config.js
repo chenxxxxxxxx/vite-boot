@@ -92,21 +92,28 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-    require("daisyui"),
+    // require("@tailwindcss/aspect-ratio"), //提供可组合API的插件，用于为元素提供固定的宽高比
+    // require("@tailwindcss/line-clamp"), //行数控制插件
+    // require("@tailwindcss/typography"), //实现排版样式的Tailwind CSS 插件
+    // require("@tailwindcss/forms"), //Tailwind CSS 表单样式插件
+    // require("daisyui"),
+    function ({ addBase }) {
+      addBase({
+        ".el-button": {
+          "background-color": "var(--el-button-bg-color,var(--el-color-white))",
+        },
+      });
+    },
   ],
   // daisyUI config (optional)
-  daisyui: {
-    styled: true,
-    themes: true,
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    prefix: "",
-    darkTheme: "dark",
-  },
+  // daisyui: {
+  //   styled: true,
+  //   themes: true,
+  //   base: true,
+  //   utils: true,
+  //   logs: true,
+  //   rtl: false,
+  //   prefix: "",
+  //   darkTheme: "dark",
+  // },
 };

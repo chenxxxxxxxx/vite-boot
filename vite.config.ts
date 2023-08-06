@@ -88,4 +88,24 @@ export default defineConfig({
   test: {
     environment: "jsdom",
   },
+  build: {
+    outDir: "dist",
+    rollupOptions: {
+      output: {
+        // * 分包策略
+        manualChunks: (id: string) => {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+          if (id.includes("element-plus/theme-chalk/")) {
+            return "element-plus";
+          }
+        },
+        // * 静态资源分类包装
+        chunkFileNames: "assets/js/[name]-[hash].js",
+        entryFileNames: "assets/js/[name]-[hash].js",
+        assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
+      },
+    },
+  },
 });
